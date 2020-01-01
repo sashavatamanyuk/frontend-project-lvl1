@@ -1,0 +1,19 @@
+{
+  "name": "brain-games",
+  "version": "1.0.0",
+  "description": "Welcome to the Brain Games!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashavatamanyuk/brain-games.git"
+  },
+  "author": "sasha vatamanyuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sashavatamanyuk/brain-games/issues"
+  },
+  "homepage": "https://github.com/sashavatamanyuk/brain-games#readme"
+}
