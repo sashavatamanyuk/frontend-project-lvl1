@@ -3,17 +3,31 @@
   "version": "1.0.0",
   "description": "Welcome to the Brain Games!",
   "main": "index.js",
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sashavatamanyuk/brain-games.git"
   },
-  "author": "sasha vatamanyuk",
+  "author": "Sasha Vatamanyuk",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sashavatamanyuk/brain-games/issues"
   },
-  "homepage": "https://github.com/sashavatamanyuk/brain-games#readme"
+  "homepage": "https://github.com/sashavatamanyuk/brain-games#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7"
+  }
 }
