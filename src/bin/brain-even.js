@@ -1,11 +1,14 @@
-import readlineSync from 'readline-sync';
-import { greetingByName } from '..';
+import { game } from '..';
 
+const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+// eslint-disable-next-line import/prefer-default-export
 const getPositiveNaturalNumber = () => Math.floor(Math.random() * 101);
 
 const isEven = (n) => n % 2 === 0;
 
 const checkAnswer = (answer, correctAnswer, userName) => {
+  // eslint-disable-next-line no-nested-ternary
   const ans = answer === 'yes' ? true : answer === 'no' ? false : answer;
   const correctAns = correctAnswer === true ? 'yes' : 'no';
   if (ans !== correctAnswer) {
@@ -17,19 +20,4 @@ const checkAnswer = (answer, correctAnswer, userName) => {
   return true;
 };
 
-const game = () => {
-  console.log('Welcome to the Brain Games!\nAnswer "yes" if the number is even, otherwise answer "no".');
-  const userName = greetingByName();
-
-  for (let correctAnswerCounter = 0; correctAnswerCounter < 3;) {
-    const questionNumber = getPositiveNaturalNumber();
-    console.log(`Question: ${questionNumber}`);
-    const answer = readlineSync.question('Your answer: ');
-    correctAnswerCounter = checkAnswer(answer, isEven(questionNumber), userName)
-      ? correctAnswerCounter + 1 : 0;
-  }
-
-  console.log(`Congratulations, ${userName}!`);
-};
-
-game();
+game(rulesGame, getPositiveNaturalNumber, checkAnswer, isEven);
