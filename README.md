@@ -7,11 +7,11 @@
 ## Install
 
 ```sh
-to do
+make install
 ```
 
 ## Using
 
-```javascript
-to do
+```sh
+make start
 ```
