@@ -46,7 +46,7 @@ const getHiddenNumber = (progressionStr) => {
     a = arrProgression[0];
     b = arrProgression[1];
   }
-  
+
   const commonDifference = Math.abs(+a - +b);
   let hiddenNumber = 0;
 
@@ -57,7 +57,7 @@ const getHiddenNumber = (progressionStr) => {
   } else {
     hiddenNumber = +arrProgression[hiddenNumberIndex - 1] + commonDifference;
   }
-  
+
   return hiddenNumber;
 };
 
