@@ -8,15 +8,16 @@
 
 ```sh
 make install
-make publish
+make build
+sudo make link
 ```
 
 ## Using
 
 ```sh
-make start brain-calc
-make start brain-even
-make start brain-gcd
-make start brain-prime
-make start brain-progression
+brain-calc
+brain-even
+brain-gcd
+brain-prime
+brain-progression
 ```

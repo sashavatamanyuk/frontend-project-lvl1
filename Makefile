@@ -2,7 +2,7 @@ install:
 	npm install
 
 build:
-	npm build
+	npm run-script build
 
 link:
 	npm link
