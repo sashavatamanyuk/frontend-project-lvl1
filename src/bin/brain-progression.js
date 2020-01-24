@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { game } from '..';
 
 const rulesGame = 'What number is missing in the progression?';
