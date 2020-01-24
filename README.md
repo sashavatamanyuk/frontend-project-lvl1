@@ -8,10 +8,15 @@
 
 ```sh
 make install
+make publish
 ```
 
 ## Using
 
 ```sh
-make start
+make start brain-calc
+make start brain-even
+make start brain-gcd
+make start brain-prime
+make start brain-progression
 ```
