@@ -2,6 +2,7 @@
   "name": "brain-games",
   "version": "1.0.0",
   "description": "Welcome to the Brain Games!",
+  "keywords": ["cli-game", "brain-games"],
   "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",

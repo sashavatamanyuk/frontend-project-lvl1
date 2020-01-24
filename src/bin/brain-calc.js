@@ -17,6 +17,7 @@ const makeExpression = () => {
   return `${a} ${operand} ${b}`;
 };
 
+// eslint-disable-next-line consistent-return
 const calculateExpression = (expressionStr) => {
   const expressionArr = expressionStr.split(' ');
   const a = parseInt(expressionArr[0], 10);

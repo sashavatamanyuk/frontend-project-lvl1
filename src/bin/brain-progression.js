@@ -10,8 +10,8 @@ const makeArithmeticProgression = () => {
   const commonDifference = getPositiveNaturalNumber(11) + 1;
   const progressionArr = [startNumber];
 
-  for (let i = 1; i < 10; i++) {
-    let nextNumber = progressionArr[progressionArr.length - 1] + commonDifference;
+  for (let i = 1; i < 10; i += 1) {
+    const nextNumber = progressionArr[progressionArr.length - 1] + commonDifference;
     progressionArr.push(nextNumber);
   }
 
@@ -23,8 +23,10 @@ const makeQuestion = () => {
   const indexOfHiddenNumber = getPositiveNaturalNumber(arithmeticProgression.length);
   return arithmeticProgression.reduce((acc, el, index) => {
     if (index === indexOfHiddenNumber) {
+      // eslint-disable-next-line no-param-reassign
       acc += '.. ';
     } else {
+      // eslint-disable-next-line no-param-reassign
       acc += `${el} `;
     }
     return acc;
@@ -41,10 +43,14 @@ const getHiddenNumber = (progressionStr) => {
     || hiddenNumberIndex === 1
     || hiddenNumberIndex === arrProgression.length - 1
     || hiddenNumberIndex === arrProgression.length - 2) {
+    // eslint-disable-next-line prefer-destructuring
     a = arrProgression[4];
+    // eslint-disable-next-line prefer-destructuring
     b = arrProgression[5];
   } else {
+    // eslint-disable-next-line prefer-destructuring
     a = arrProgression[0];
+    // eslint-disable-next-line prefer-destructuring
     b = arrProgression[1];
   }
 

@@ -3,17 +3,17 @@ import { game } from '..';
 
 const rulesGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const isPrime = num => {
-  for (let i = 2; i < num; i++)
+const isPrime = (num) => {
+  for (let i = 2; i < num; i += 1) {
     if (num % i === 0) return false;
+  }
+
   return num > 1;
 };
 
 const getPositiveNaturalNumber = (max) => Math.floor(Math.random() * max);
 
-const makeQuestion = () => {
-  return `${getPositiveNaturalNumber(101)}`;
-};
+const makeQuestion = () => `${getPositiveNaturalNumber(101)}`;
 
 const checkAnswer = (answer, correctAnswer, userName) => {
   // eslint-disable-next-line no-nested-ternary
