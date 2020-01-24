@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { game } from '..';
 
 const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
