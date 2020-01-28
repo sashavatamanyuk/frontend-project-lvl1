@@ -42,10 +42,7 @@ export const getHiddenNumber = (progressionStr) => {
     || hiddenNumberIndex === 1
     || hiddenNumberIndex === arrProgression.length - 1
     || hiddenNumberIndex === arrProgression.length - 2) {
-    // eslint-disable-next-line prefer-destructuring
-    a = arrProgression[4];
-    // eslint-disable-next-line prefer-destructuring
-    b = arrProgression[5];
+    [a, b] = [arrProgression[4], arrProgression[5]];
   }
 
   const commonDifference = Math.abs(+a - +b);

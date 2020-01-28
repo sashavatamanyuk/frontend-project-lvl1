@@ -49,8 +49,8 @@ const getCheckAnswer = (gameType) => {
   return checkAnswer;
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export const game = (rulesGame, getQuestion, gameType, getCorrectAnswer) => {
+
+export default (rulesGame, getQuestion, gameType, getCorrectAnswer) => {
   console.log('Welcome to the Brain Games!');
   console.log(rulesGame);
   const userName = greetingByName();

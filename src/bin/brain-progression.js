@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { game } from '..';
+import game from '../game';
 import {
   rulesGame, makeQuestion, gameType, getHiddenNumber,
 } from './games/brain-progression_module';

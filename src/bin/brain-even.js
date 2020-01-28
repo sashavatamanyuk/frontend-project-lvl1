@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { game } from '..';
+import game from '../game';
 import {
   rulesGame, getPositiveNaturalNumber, gameType, isEven,
 } from './games/brain-even_module';
