@@ -1,8 +1,9 @@
 import game from '../game';
+import { getPositiveNaturalNumber } from './common/random-number_module';
 
-export const gameType = 'calc';
+const gameType = 'calc';
 
-export const rulesGame = 'What is the result of the expression?';
+const rulesGame = 'What is the result of the expression?';
 
 const getRandomOperand = () => {
   const operands = ['+', '-', '*'];
@@ -10,9 +11,7 @@ const getRandomOperand = () => {
   return operands[Math.floor(Math.random() * 3)];
 };
 
-const getPositiveNaturalNumber = () => Math.floor(Math.random() * 101);
-
-export const makeExpression = () => {
+const makeExpression = () => {
   const a = getPositiveNaturalNumber();
   const b = getPositiveNaturalNumber();
   const operand = getRandomOperand();
@@ -20,7 +19,7 @@ export const makeExpression = () => {
   return `${a} ${operand} ${b}`;
 };
 
-export const calculateExpression = (expressionStr) => {
+const calculateExpression = (expressionStr) => {
   const expressionArr = expressionStr.split(' ');
 
   const a = parseInt(expressionArr[0], 10);
@@ -28,14 +27,17 @@ export const calculateExpression = (expressionStr) => {
   const operand = expressionArr[1];
 
   let result = 0;
-  if (operand === '+') {
-    result = a + b;
-  }
-  if (operand === '-') {
-    result = a - b;
-  }
-  if (operand === '*') {
-    result = a * b;
+  switch (operand) {
+    case '+':
+      result = a + b;
+      break;
+    case '-':
+      result = a - b;
+      break;
+    case '*':
+      result = a * b;
+      break;
+    default:
   }
 
   return result;

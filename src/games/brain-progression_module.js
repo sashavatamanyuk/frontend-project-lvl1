@@ -1,8 +1,9 @@
-export const gameType = 'progression';
+import game from '../game';
+import { getPositiveNaturalNumber } from './common/random-number_module';
 
-export const rulesGame = 'What number is missing in the progression?';
+const gameType = 'progression';
 
-const getPositiveNaturalNumber = (max) => Math.floor(Math.random() * max);
+const rulesGame = 'What number is missing in the progression?';
 
 const makeArithmeticProgression = () => {
   const startNumber = getPositiveNaturalNumber(21);
@@ -17,7 +18,7 @@ const makeArithmeticProgression = () => {
   return progressionArr;
 };
 
-export const makeQuestion = () => {
+const makeQuestion = () => {
   const arithmeticProgression = makeArithmeticProgression();
   const indexOfHiddenNumber = getPositiveNaturalNumber(arithmeticProgression.length);
   return arithmeticProgression.reduce((acc, el, index) => {
@@ -32,7 +33,7 @@ export const makeQuestion = () => {
   }, '');
 };
 
-export const getHiddenNumber = (progressionStr) => {
+const getHiddenNumber = (progressionStr) => {
   const arrProgression = progressionStr.trim().split(' ');
   const hiddenNumberIndex = arrProgression.indexOf('..');
 
@@ -63,3 +64,5 @@ export const getHiddenNumber = (progressionStr) => {
 
   return hiddenNumber;
 };
+
+export default () => game(rulesGame, makeQuestion, gameType, getHiddenNumber);

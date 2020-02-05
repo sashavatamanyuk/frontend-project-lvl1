@@ -1,7 +1,10 @@
-export const gameType = 'even';
+import game from '../game';
+import { getPositiveNaturalNumber } from './common/random-number_module';
 
-export const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+const gameType = 'even';
 
-export const getPositiveNaturalNumber = () => Math.floor(Math.random() * 101);
+const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export const isEven = (n) => n % 2 === 0;
+const isEven = (n) => n % 2 === 0;
+
+export default () => game(rulesGame, getPositiveNaturalNumber, gameType, isEven);

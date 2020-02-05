@@ -1,10 +1,11 @@
-export const gameType = 'gcd';
+import game from '../game';
+import { getPositiveNaturalNumber } from './common/random-number_module';
 
-export const rulesGame = 'Find the greatest common divisor of given numbers.';
+const gameType = 'gcd';
 
-const getPositiveNaturalNumber = () => Math.floor(Math.random() * 101);
+const rulesGame = 'Find the greatest common divisor of given numbers.';
 
-export const makeQuestion = () => {
+const makeQuestion = () => {
   const a = getPositiveNaturalNumber();
   const b = getPositiveNaturalNumber();
 
@@ -19,10 +20,12 @@ const getEuclidGCD = (a, b) => {
   return getEuclidGCD(b, a % b);
 };
 
-export const getGCD = (numbersStr) => {
+const getGCD = (numbersStr) => {
   const numbersArr = numbersStr.split(' ');
   const a = parseInt(numbersArr[0], 10);
   const b = parseInt(numbersArr[1], 10);
 
   return getEuclidGCD(a, b);
 };
+
+export default () => game(rulesGame, makeQuestion, gameType, getGCD);
