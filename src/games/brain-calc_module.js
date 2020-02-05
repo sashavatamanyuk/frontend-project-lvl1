@@ -1,5 +1,5 @@
 import game from '../game';
-import { getPositiveNaturalNumber } from './common/random-number_module';
+import getPositiveNaturalNumber from './common/random-number_module';
 
 const gameType = 'calc';
 
