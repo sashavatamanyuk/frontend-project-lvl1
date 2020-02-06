@@ -11,7 +11,7 @@ const makeArithmeticProgression = () => {
   const progressionArr = [startNumber];
 
   for (let i = 1; i < 10; i += 1) {
-    const nextNumber = progressionArr[progressionArr.length - 1] + commonDifference;
+    const nextNumber = startNumber + commonDifference * i;
     progressionArr.push(nextNumber);
   }
 
