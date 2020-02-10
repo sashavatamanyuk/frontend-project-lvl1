@@ -6,8 +6,8 @@ const gameType = 'progression';
 const rulesGame = 'What number is missing in the progression?';
 
 const makeArithmeticProgression = () => {
-  const startNumber = getPositiveNaturalNumber(21);
-  const commonDifference = getPositiveNaturalNumber(11) + 1;
+  const startNumber = getPositiveNaturalNumber(0, 20);
+  const commonDifference = getPositiveNaturalNumber(0, 10) + 1;
   const progressionArr = [startNumber];
 
   for (let i = 1; i < 10; i += 1) {
@@ -20,7 +20,7 @@ const makeArithmeticProgression = () => {
 
 const makeQuestion = () => {
   const arithmeticProgression = makeArithmeticProgression();
-  const indexOfHiddenNumber = getPositiveNaturalNumber(arithmeticProgression.length);
+  const indexOfHiddenNumber = getPositiveNaturalNumber(0, arithmeticProgression.length);
   return arithmeticProgression.reduce((acc, el, index) => {
     let accumulator = acc;
     if (index === indexOfHiddenNumber) {

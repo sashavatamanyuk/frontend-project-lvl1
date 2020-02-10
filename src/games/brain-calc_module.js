@@ -8,7 +8,7 @@ const rulesGame = 'What is the result of the expression?';
 const getRandomOperand = () => {
   const operands = ['+', '-', '*'];
 
-  return operands[Math.floor(Math.random() * 3)];
+  return operands[Math.floor(Math.random() * operands.length)];
 };
 
 const makeExpression = () => {
