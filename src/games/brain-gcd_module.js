@@ -1,8 +1,6 @@
 import game from '../game';
 import getPositiveNaturalNumber from './common/random-number_module';
 
-const gameType = 'gcd';
-
 const rulesGame = 'Find the greatest common divisor of given numbers.';
 
 const makeQuestion = () => {
@@ -28,4 +26,11 @@ const getGCD = (numbersStr) => {
   return getEuclidGCD(a, b);
 };
 
-export default () => game(rulesGame, makeQuestion, gameType, getGCD);
+const makeDataGame = () => {
+  const question = makeQuestion();
+  const answer = `${getGCD(question)}`;
+
+  return [question, answer];
+};
+
+export default () => game(rulesGame, makeDataGame);

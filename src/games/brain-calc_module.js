@@ -1,8 +1,6 @@
 import game from '../game';
 import getPositiveNaturalNumber from './common/random-number_module';
 
-const gameType = 'calc';
-
 const rulesGame = 'What is the result of the expression?';
 
 const getRandomOperand = () => {
@@ -11,7 +9,7 @@ const getRandomOperand = () => {
   return operands[Math.floor(Math.random() * operands.length)];
 };
 
-const makeExpression = () => {
+const makeQuestion = () => {
   const a = getPositiveNaturalNumber();
   const b = getPositiveNaturalNumber();
   const operand = getRandomOperand();
@@ -19,12 +17,12 @@ const makeExpression = () => {
   return `${a} ${operand} ${b}`;
 };
 
-const calculateExpression = (expressionStr) => {
-  const expressionArr = expressionStr.split(' ');
+const getAnswer = (expressionStr) => {
+  // eslint-disable-next-line prefer-const
+  let [a, operand, b] = expressionStr.split(' ');
 
-  const a = parseInt(expressionArr[0], 10);
-  const b = parseInt(expressionArr[2], 10);
-  const operand = expressionArr[1];
+  a = parseInt(a, 10);
+  b = parseInt(b, 10);
 
   let result = 0;
   switch (operand) {
@@ -43,4 +41,11 @@ const calculateExpression = (expressionStr) => {
   return result;
 };
 
-export default () => game(rulesGame, makeExpression, gameType, calculateExpression);
+const makeDataGame = () => {
+  const question = makeQuestion();
+  const answer = `${getAnswer(question)}`;
+
+  return [question, answer];
+};
+
+export default () => game(rulesGame, makeDataGame);

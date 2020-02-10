@@ -1,13 +1,11 @@
 import game from '../game';
 import getPositiveNaturalNumber from './common/random-number_module';
 
-const gameType = 'progression';
-
 const rulesGame = 'What number is missing in the progression?';
 
-const makeArithmeticProgression = () => {
+const makeArithmeticProgressionData = () => {
   const startNumber = getPositiveNaturalNumber(0, 20);
-  const commonDifference = getPositiveNaturalNumber(0, 10) + 1;
+  const commonDifference = getPositiveNaturalNumber(1, 10);
   const progressionArr = [startNumber];
 
   for (let i = 1; i < 10; i += 1) {
@@ -15,54 +13,27 @@ const makeArithmeticProgression = () => {
     progressionArr.push(nextNumber);
   }
 
-  return progressionArr;
+  const hiddenNumberIndex = getPositiveNaturalNumber(0, progressionArr.length - 1);
+
+  return [progressionArr, hiddenNumberIndex];
 };
 
-const makeQuestion = () => {
-  const arithmeticProgression = makeArithmeticProgression();
-  const indexOfHiddenNumber = getPositiveNaturalNumber(0, arithmeticProgression.length);
-  return arithmeticProgression.reduce((acc, el, index) => {
-    let accumulator = acc;
-    if (index === indexOfHiddenNumber) {
-      accumulator += '.. ';
-    } else {
-      accumulator += `${el} `;
-    }
+const makeQuestion = (arr, hidden) => {
+  let question = '';
 
-    return accumulator;
-  }, '');
-};
-
-const getHiddenNumber = (progressionStr) => {
-  const arrProgression = progressionStr.trim().split(' ');
-  const hiddenNumberIndex = arrProgression.indexOf('..');
-
-  let a = arrProgression[0];
-  let b = arrProgression[1];
-  if (hiddenNumberIndex === 0
-    || hiddenNumberIndex === 1
-    || hiddenNumberIndex === arrProgression.length - 1
-    || hiddenNumberIndex === arrProgression.length - 2) {
-    [a, b] = [arrProgression[4], arrProgression[5]];
+  for (let i = 0; i < arr.length; i += 1) {
+    question += i === hidden ? '.. ' : `${arr[i]} `;
   }
 
-  const commonDifference = Math.abs(+a - +b);
-  let hiddenNumber = 0;
-  if (hiddenNumberIndex === 0) {
-    const secondNumberInProgression = +arrProgression[1];
-
-    hiddenNumber = secondNumberInProgression - commonDifference;
-  } else if (hiddenNumberIndex === arrProgression.length - 1) {
-    const penultimateNumberInProgression = +arrProgression[arrProgression.length - 2];
-
-    hiddenNumber = penultimateNumberInProgression + commonDifference;
-  } else {
-    const beforeHiddenNumberInProgression = +arrProgression[hiddenNumberIndex - 1];
-
-    hiddenNumber = beforeHiddenNumberInProgression + commonDifference;
-  }
-
-  return hiddenNumber;
+  return question;
 };
 
-export default () => game(rulesGame, makeQuestion, gameType, getHiddenNumber);
+const makeDataGame = () => {
+  const [progressionArr, hiddenNumberIndex] = makeArithmeticProgressionData();
+  const question = makeQuestion(progressionArr, hiddenNumberIndex);
+  const answer = `${progressionArr[hiddenNumberIndex]}`;
+
+  return [question, answer];
+};
+
+export default () => game(rulesGame, makeDataGame);
