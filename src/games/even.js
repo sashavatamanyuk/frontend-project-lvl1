@@ -1,5 +1,5 @@
 import game from '../game';
-import getPositiveNaturalNumber from './common/random-number_module';
+import getPositiveNaturalNumber from './common/random-number';
 
 const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
 
