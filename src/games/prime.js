@@ -1,7 +1,7 @@
 import game from '../game';
-import getPositiveNaturalNumber from './common/random-number';
+import getRandomInteger from './common/random-integer';
 
-const rulesGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   if (num <= 1) return false;
@@ -13,13 +13,11 @@ const isPrime = (num) => {
   return true;
 };
 
-const makeQuestion = () => `${getPositiveNaturalNumber()}`;
-
 const makeDataGame = () => {
-  const question = makeQuestion();
-  const answer = isPrime(+question) ? 'yes' : 'no';
+  const question = getRandomInteger();
+  const answer = isPrime(question) ? 'yes' : 'no';
 
   return [question, answer];
 };
 
-export default () => game(rulesGame, makeDataGame);
+export default () => game(description, makeDataGame);

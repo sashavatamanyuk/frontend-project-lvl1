@@ -23,7 +23,7 @@ $ brain-progression
 ```
 
 e.g.:
-To win the game you have get **3 correct answers in a row.**
+To win the game you have get **3 correct answers.**
 ```
 $ brain-calc
 ---------- Result ------------

@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import startGame from '../games/brain-progression_module';
+import startGame from '../games/progression';
 
 startGame();

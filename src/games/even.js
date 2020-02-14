@@ -1,15 +1,15 @@
 import game from '../game';
-import getPositiveNaturalNumber from './common/random-number';
+import getRandomInteger from './common/random-integer';
 
-const rulesGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (n) => n % 2 === 0;
 
 const makeDataGame = () => {
-  const question = getPositiveNaturalNumber();
+  const question = getRandomInteger();
   const answer = isEven(question) ? 'yes' : 'no';
 
   return [question, answer];
 };
 
-export default () => game(rulesGame, makeDataGame);
+export default () => game(description, makeDataGame);

@@ -1,31 +1,29 @@
 import game from '../game';
-import getPositiveNaturalNumber from './common/random-number';
+import getRandomInteger from './common/random-integer';
 
-const rulesGame = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
-const getRandomOperand = () => {
-  const operands = ['+', '-', '*'];
+const mathSymbols = ['+', '-', '*'];
 
-  return operands[Math.floor(Math.random() * operands.length)];
-};
+const getRandomMathSymbol = (symbols) => symbols[getRandomInteger(0, symbols.length - 1)];
 
 const makeQuestion = () => {
-  const a = getPositiveNaturalNumber();
-  const b = getPositiveNaturalNumber();
-  const operand = getRandomOperand();
+  const a = getRandomInteger();
+  const b = getRandomInteger();
+  const mathSymbol = getRandomMathSymbol(mathSymbols);
 
-  return `${a} ${operand} ${b}`;
+  return `${a} ${mathSymbol} ${b}`;
 };
 
-const getAnswer = (expressionStr) => {
-  // eslint-disable-next-line prefer-const
-  let [a, operand, b] = expressionStr.split(' ');
+const getAnswer = (expression) => {
+  let [a, , b] = expression.split(' ');
+  const mathOperation = expression.split(' ')[1];
 
   a = parseInt(a, 10);
   b = parseInt(b, 10);
 
   let result = 0;
-  switch (operand) {
+  switch (mathOperation) {
     case '+':
       result = a + b;
       break;
@@ -43,9 +41,9 @@ const getAnswer = (expressionStr) => {
 
 const makeDataGame = () => {
   const question = makeQuestion();
-  const answer = `${getAnswer(question)}`;
+  const answer = getAnswer(question).toString();
 
   return [question, answer];
 };
 
-export default () => game(rulesGame, makeDataGame);
+export default () => game(description, makeDataGame);

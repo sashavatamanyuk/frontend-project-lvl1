@@ -6,20 +6,22 @@ export default (rulesGame, makeDataGame) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
 
-  let correctAnswerCounter = 0;
-  do {
+  let qtyCorrectAnswer = 0;
+  const qtyRound = 3;
+  for (let i = 0; i < qtyRound; i += 1) {
     const [question, answer] = makeDataGame();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer !== answer) {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${answer}".\nLet's try again, ${userName}!`);
-      correctAnswerCounter = 0;
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${answer}".`);
+      console.log(`Let's try again, ${userName}!`);
+      break;
     } else {
       console.log('Correct!');
-      correctAnswerCounter += 1;
+      qtyCorrectAnswer += 1;
     }
-  } while (correctAnswerCounter < 3);
+  }
 
-  console.log(`Congratulations, ${userName}!`);
+  if (qtyCorrectAnswer === qtyRound) console.log(`Congratulations, ${userName}!`);
 };
