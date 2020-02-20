@@ -1,5 +1,5 @@
 import game from '../game';
-import getRandomInteger from './common/random-integer';
+import getRandomInteger from '../common/random-integer';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 

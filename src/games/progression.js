@@ -1,16 +1,13 @@
 import game from '../game';
-import getRandomInteger from './common/random-integer';
+import getRandomInteger from '../common/random-integer';
 
 const description = 'What number is missing in the progression?';
 
-const makeArithmeticProgression = () => {
-  const startNumber = getRandomInteger(0, 20);
-  const commonDifference = getRandomInteger(1, 10);
+const makeArithmeticProgression = (startNumber, commonDiff, progressionLength = 10) => {
   const progression = [];
-  const progressionLength = 10;
 
   for (let i = 0; i < progressionLength; i += 1) {
-    const nextNumber = startNumber + commonDifference * i;
+    const nextNumber = startNumber + commonDiff * i;
     progression.push(nextNumber);
   }
 
@@ -23,14 +20,21 @@ const makeQuestion = (progression, hidden) => {
   let question = '';
 
   for (let i = 0; i < progression.length; i += 1) {
-    question += i === hidden ? '.. ' : `${progression[i]} `;
+    if (i === progression.length - 1) {
+      question = i === hidden ? `${question}..` : `${question}${progression[i]}`;
+    } else {
+      question = i === hidden ? `${question}.. ` : `${question}${progression[i]} `;
+    }
   }
 
   return question;
 };
 
 const makeDataGame = () => {
-  const progression = makeArithmeticProgression();
+  const startProgression = getRandomInteger(0, 20);
+  const differenceProgression = getRandomInteger(1, 10);
+  const progression = makeArithmeticProgression(startProgression, differenceProgression);
+
   const hiddenNumberIndex = getProgressionHiddenNumber(progression);
   const question = makeQuestion(progression, hiddenNumberIndex);
   const answer = progression[hiddenNumberIndex].toString();

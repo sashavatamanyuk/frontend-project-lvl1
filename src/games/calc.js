@@ -1,29 +1,15 @@
 import game from '../game';
-import getRandomInteger from './common/random-integer';
+import getRandomInteger from '../common/random-integer';
 
 const description = 'What is the result of the expression?';
 
-const mathSymbols = ['+', '-', '*'];
+const mathSigns = ['+', '-', '*'];
 
-const getRandomMathSymbol = (symbols) => symbols[getRandomInteger(0, symbols.length - 1)];
+const getRandomMathSign = (signs) => signs[getRandomInteger(0, signs.length - 1)];
 
-const makeQuestion = () => {
-  const a = getRandomInteger();
-  const b = getRandomInteger();
-  const mathSymbol = getRandomMathSymbol(mathSymbols);
-
-  return `${a} ${mathSymbol} ${b}`;
-};
-
-const getAnswer = (expression) => {
-  let [a, , b] = expression.split(' ');
-  const mathOperation = expression.split(' ')[1];
-
-  a = parseInt(a, 10);
-  b = parseInt(b, 10);
-
+const getAnswer = (a, b, sign) => {
   let result = 0;
-  switch (mathOperation) {
+  switch (sign) {
     case '+':
       result = a + b;
       break;
@@ -40,8 +26,12 @@ const getAnswer = (expression) => {
 };
 
 const makeDataGame = () => {
-  const question = makeQuestion();
-  const answer = getAnswer(question).toString();
+  const a = getRandomInteger();
+  const b = getRandomInteger();
+  const mathSign = getRandomMathSign(mathSigns);
+
+  const question = `${a} ${mathSign} ${b}`;
+  const answer = getAnswer(a, b, mathSign).toString();
 
   return [question, answer];
 };

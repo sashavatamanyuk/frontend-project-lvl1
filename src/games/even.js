@@ -1,5 +1,5 @@
 import game from '../game';
-import getRandomInteger from './common/random-integer';
+import getRandomInteger from '../common/random-integer';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
