@@ -14,20 +14,14 @@ const makeArithmeticProgression = (startNumber, commonDiff, progressionLength = 
   return progression;
 };
 
-const getProgressionHiddenNumber = (progression) => getRandomInteger(0, progression.length - 1);
-
 const makeQuestion = (progression, hidden) => {
   let question = '';
 
   for (let i = 0; i < progression.length; i += 1) {
-    if (i === progression.length - 1) {
-      question = i === hidden ? `${question}..` : `${question}${progression[i]}`;
-    } else {
-      question = i === hidden ? `${question}.. ` : `${question}${progression[i]} `;
-    }
+    question = i === hidden ? `${question}.. ` : `${question}${progression[i]} `;
   }
 
-  return question;
+  return question.trim();
 };
 
 const makeDataGame = () => {
@@ -35,7 +29,7 @@ const makeDataGame = () => {
   const differenceProgression = getRandomInteger(1, 10);
   const progression = makeArithmeticProgression(startProgression, differenceProgression);
 
-  const hiddenNumberIndex = getProgressionHiddenNumber(progression);
+  const hiddenNumberIndex = getRandomInteger(0, progression.length - 1);
   const question = makeQuestion(progression, hiddenNumberIndex);
   const answer = progression[hiddenNumberIndex].toString();
 
