@@ -7,7 +7,7 @@
 ## Install
 
 ```sh
-$ npm install -g brain-games
+$ make install
 $ make build
 $ sudo make link
 ```
